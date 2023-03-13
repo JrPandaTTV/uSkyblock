@@ -1,0 +1,101 @@
+name: uSkyblock
+version: '${project.version}'
+main: com.jrpanda.uskyblock.Main
+api-version: 1.19
+commands:
+  island:
+    description: Opens up island command
+    usage: /<command> <args>
+    aliases: [is, islands]
+  nightvision:
+    description: Turns on night vision.
+    usage: /<command>
+    aliases: [nv]
+  fly:
+    description: Take flight!
+    usage: /<command> [player]
+    aliases: []
+  broadcast:
+    description: Broadcast message.
+    usage: /<command> <args>
+    aliases: [bc, bcast]
+  tphere:
+    description: Teleports player to you.
+    usage: /<command> <args>
+    aliases: []
+  nickname:
+    description: Sets a nickname.
+    usage: /<command> <on|off|args>
+    aliases: [nick]
+  workbench:
+    description: Opens up a crafting table menu.
+    usage: /<command>
+    aliases: [bench, workb, craft, wb, wbench]
+  enderchest:
+    description: Opens player's enderchest.
+    usage: /<command> <args>
+    aliases: [enderc, endc, echest, ec]
+  vanish:
+    description: Poof magic!
+    usage: /<command>
+    aliases: [v]
+  disposal:
+    description: Opens up trash bin!
+    usage: /<command>
+    aliases: [trash]
+  tpall:
+    description: Teleports everyone to you!
+    usage: /<command>
+    aliases: []
+  speed:
+    description: Set speeds
+    usage: /<command> [args]
+    aliases: []
+  alert:
+    description: Send alerts
+    usage: /<command> <player> [args]
+    aliases: []
+  kickall:
+    description: Kicks all the player on the server.
+    usage: /<command>
+    aliases: []
+  setwarp:
+    description: Create warps.
+    usage: /<command>
+    aliases: []
+  delwarp:
+    description: Deletes warps.
+    usage: /<command>
+    aliases: []
+  warp:
+    description: Teleports to warps.
+    usage: /<command>
+    aliases: []
+  spawn:
+    description: Teleports to spawn.
+    usage: /<command>
+    aliases: []
+  setspawn:
+    description: Set spawn.
+    usage: /<command>
+    aliases: []
+  afk:
+    description: AFK.
+    usage: /<command>
+    aliases: []
+  heal:
+    description: Heals player.
+    usage: /<command> [player]
+    aliases: []
+  rename:
+    description: Renames item.
+    usage: /<command> [args]
+    aliases: []
+  invsee:
+    description: Inventory see.
+    usage: /<command> [player]
+    aliases: []
+  hat:
+    description: Puts a new hat on you!
+    usage: /<command> [off]
+    aliases: []
