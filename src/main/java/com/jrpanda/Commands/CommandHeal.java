@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 public class CommandHeal implements CommandExecutor {
     @Override
@@ -31,6 +32,9 @@ public class CommandHeal implements CommandExecutor {
     }
 
     public void healPlayer(Player player){
+        for(PotionEffect pot : player.getActivePotionEffects()){
+            player.removePotionEffect(pot.getType());
+        }
         player.setHealth(20.0);
         player.setFoodLevel(20);
         player.setFreezeTicks(0);

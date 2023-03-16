@@ -99,3 +99,15 @@ commands:
     description: Puts a new hat on you!
     usage: /<command> [off]
     aliases: []
+  feed:
+    description: feeds
+    usage: /<command>
+    aliases: []
+  rank:
+    description: rank
+    usage: /<command> [args]
+    aliases: []
+  hologram:
+    description: Hologram
+    usage: /<command> [args]
+    aliases: []

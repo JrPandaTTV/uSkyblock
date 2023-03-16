@@ -1,29 +1,45 @@
 package com.jrpanda.uskyblock;
 
 import com.jrpanda.Commands.*;
+import com.jrpanda.Holograms.HologramCommand;
 import com.jrpanda.Listener.ObsToLava;
 import com.jrpanda.Listener.PlayerChat;
 import com.jrpanda.Listener.PlayerConnection;
+import com.jrpanda.Ranks.RankCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
 
 public final class Main extends JavaPlugin {
 
-    private File playerFolder;
+    private File playerFolder, rankFile;
     @Override
     public void onEnable() {
         registerListeners();
         registerCommands();
 
         playerFolder = new File(getDataFolder(), "PlayerData");
-        if(!playerFolder.exists()){
+        if (!playerFolder.exists()) {
             playerFolder.mkdirs();
         }
+
+        rankFile = new File(getDataFolder() , "groups.yml");
+        if (!rankFile.exists()){
+            try {
+                rankFile.createNewFile();
+            } catch (IOException e) {
+                getServer().getLogger().log(Level.SEVERE, "Groups.yml cannot be created.");
+            }
+        }
+
     }
+
+
 
     @Override
     public void onDisable() {
@@ -55,8 +71,11 @@ public final class Main extends JavaPlugin {
         registerCommand("heal", new CommandHeal());
         registerCommand("rename", new CommandRename());
         registerCommand("invsee", new CommandInvsee());
-        //registerCommand("invsee", new CommandInvsee());
+        registerCommand("feed", new CommandFeed());
         registerCommand("hat", new CommandHat());
+        registerCommand("rank", new RankCommand());
+
+        registerCommand("hologram", new HologramCommand());
 
         registerCommand("island", new Island());
         //registerCommand("kits", new Kits());

@@ -15,9 +15,15 @@ public class CommandAlert implements CommandExecutor {
         if(command.getName().equalsIgnoreCase("alert")){
             Player player = (Player) sender;
             if(args.length > 1){
-                Player target = Bukkit.getPlayer(args[0]);
                 args = Arrays.copyOfRange(args, 1, args.length);
                 String msg = Helper.compileText(args);
+                if(args[0].equalsIgnoreCase("@a")){
+                    for(Player player1 : Bukkit.getOnlinePlayers()){
+                        Helper.sendTitle(player1, "&e&lALERT", msg, 5, 30, 45);
+                    }
+                    return Helper.send(player, "&6Alert has been sent!");
+                }
+                Player target = Bukkit.getPlayer(args[0]);
                 if(target == null){ return Helper.send(player, "&cPlayer not found!"); }
                 Helper.sendTitle(target, "&e&lALERT", msg, 5, 30, 45);
                 return Helper.send(player, "&6Alert has been sent!~");

@@ -6,6 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.bukkit.ChatColor.COLOR_CHAR;
+
 public class Helper {
     public static boolean send(CommandSender sender, String msg){
         sender.sendMessage(Helper.toColor(msg));
@@ -37,4 +42,6 @@ public class Helper {
     public static void announceMessage(String msg){
         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', msg));
     }
+
+
 }
