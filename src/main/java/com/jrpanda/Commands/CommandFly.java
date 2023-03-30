@@ -14,18 +14,22 @@ public class CommandFly implements CommandExecutor {
             if(!(sender instanceof Player)){return true;}
             Player player = (Player) sender;
             if(args.length == 0){
-                if(player.getAllowFlight()==false){
-                    player.setAllowFlight(true);
-                    return Helper.send(player, "&6Flight has been &aenabled.");
+                if(setFlight(player) == true){
+                    return Helper.send(player, "&6Flight has been &aenabled!");
                 } else {
-                    player.setAllowFlight(false);
-                    return Helper.send(player, "&6Flight has been &cdisabled.");
+                    return Helper.send(player, "&6Flight has been &cdisabled!");
                 }
             }
             if(args.length == 1){
                 Player target = Bukkit.getPlayer(args[0]);
                 if(target == null){ return Helper.send(player, "&cPlayer not found!"); }
-
+                if(setFlight(target) == true){
+                    Helper.send(player, "&6" +target.getName() + "'s flight has been &aenabled!");
+                    return Helper.send(target, "&6Flight has been &aenabled!");
+                } else {
+                    Helper.send(player, "&6" +target.getName() + "'s flight has been &cdisabled!!");
+                    return Helper.send(target, "&6Flight has been &cdisabled!");
+                }
             }
 
 
@@ -34,6 +38,16 @@ public class CommandFly implements CommandExecutor {
 
 
         return false;
+    }
+
+    private boolean setFlight(Player player){
+        if(player.getAllowFlight() == false){
+            player.setAllowFlight(true);
+            return true;
+        } else {
+            player.setAllowFlight(false);
+            return false;
+        }
     }
 
 }

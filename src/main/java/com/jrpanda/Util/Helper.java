@@ -1,15 +1,12 @@
 package com.jrpanda.Util;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
+import net.md_5.bungee.api.ChatColor;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.bukkit.ChatColor.COLOR_CHAR;
 
 public class Helper {
     public static boolean send(CommandSender sender, String msg){
@@ -43,5 +40,18 @@ public class Helper {
         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', msg));
     }
 
+    private static final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+
+    public static String hexColor(String message) {
+        Matcher matcher = pattern.matcher(message);
+
+        while (matcher.find()) {
+            String color = message.substring(matcher.start(), matcher.end());
+            message = message.replace(color, "" + ChatColor.of(color));
+            matcher = pattern.matcher(message);
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', message);
+    }
 
 }

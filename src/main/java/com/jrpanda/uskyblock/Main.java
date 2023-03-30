@@ -2,24 +2,28 @@ package com.jrpanda.uskyblock;
 
 import com.jrpanda.Commands.*;
 import com.jrpanda.Holograms.HologramCommand;
-import com.jrpanda.Listener.ObsToLava;
-import com.jrpanda.Listener.PlayerChat;
-import com.jrpanda.Listener.PlayerConnection;
+import com.jrpanda.Listener.*;
 import com.jrpanda.Ranks.RankCommand;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
 public final class Main extends JavaPlugin {
-
+    private JDA jda;
     private File playerFolder, rankFile;
+
     @Override
     public void onEnable() {
+        //setupDiscord();
         registerListeners();
         registerCommands();
 
@@ -37,6 +41,7 @@ public final class Main extends JavaPlugin {
             }
         }
 
+
     }
 
 
@@ -44,9 +49,15 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
 
-
     }
 
+    public void setupDiscord(){
+        JDABuilder builder = JDABuilder.createDefault("MTA4MjIxNzYxMDc1NTcwNjg5MA.GiJ6rI.ecJ7ZWP3agRbL-uzIN4x9Wesfyl1xNyqaRrRSs");
+        builder.setActivity(Activity.watching("FrostMC"));
+        builder.addEventListeners(new DiscordListener());
+        jda = builder.build();
+        System.out.println("Success!");
+    }
     public void registerCommands(){
         registerCommand("tphere", new CommandTeleporthere());
         registerCommand("vanish", new CommandVanish(this));
@@ -74,7 +85,7 @@ public final class Main extends JavaPlugin {
         registerCommand("feed", new CommandFeed());
         registerCommand("hat", new CommandHat());
         registerCommand("rank", new RankCommand());
-
+        registerCommand("realtime", new CommandRealTime());
         registerCommand("hologram", new HologramCommand());
 
         registerCommand("island", new Island());
@@ -85,7 +96,9 @@ public final class Main extends JavaPlugin {
     public void registerListeners(){
         registerListener(new ObsToLava());
         registerListener(new PlayerChat());
+        registerListener(new ServerPing());
         //registerListener(new CommandInvsee());
+        registerListener(new GrapplingHook());
         registerListener(new PlayerConnection(this));
     }
 

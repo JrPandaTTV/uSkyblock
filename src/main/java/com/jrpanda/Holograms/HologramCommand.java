@@ -33,12 +33,12 @@ public class HologramCommand implements CommandExecutor {
                 if(args[0].equalsIgnoreCase("help")){
                     Helper.send(player,"&e&l----- &6&lHolograms Commands &e&l-----");
                     Helper.send(player,"&d/hologram create <name> [text]");
-                    Helper.send(player,"&d/hologram delete <name>");
-                    Helper.send(player,"&d/hologram edit <name>");
-                    Helper.send(player,"&d/hologram list [page]");
-                    Helper.send(player,"&d/hologram movehere <name>");
-                    Helper.send(player,"&d/hologram reload");
-                    Helper.send(player,"&d/hologram teleport <name>");
+                    Helper.send(player,"&d/hologram delete <name>"); //
+                    Helper.send(player,"&d/hologram edit <name>"); //
+                    Helper.send(player,"&d/hologram list [page]"); //
+                    Helper.send(player,"&d/hologram movehere <name>"); //
+                    Helper.send(player,"&d/hologram reload"); //
+                    Helper.send(player,"&d/hologram teleport <name>"); //
                     Helper.send(player,"&e&l----- &6&lHolograms Commands &e&l-----");
                     return true;
                 }

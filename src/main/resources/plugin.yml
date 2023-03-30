@@ -111,3 +111,7 @@ commands:
     description: Hologram
     usage: /<command> [args]
     aliases: []
+  realtime:
+    description: Real Time
+    usage: /<command> [args]
+    aliases: []

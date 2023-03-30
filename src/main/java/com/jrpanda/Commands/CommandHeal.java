@@ -12,9 +12,7 @@ public class CommandHeal implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equalsIgnoreCase("heal")){
-            if(!(sender instanceof Player)){
-                return true;
-            }
+            if(!(sender instanceof Player)){return true;}
             Player player = (Player) sender;
             if(args.length == 0){
                 healPlayer(player);
@@ -32,9 +30,7 @@ public class CommandHeal implements CommandExecutor {
     }
 
     public void healPlayer(Player player){
-        for(PotionEffect pot : player.getActivePotionEffects()){
-            player.removePotionEffect(pot.getType());
-        }
+        for(PotionEffect pot : player.getActivePotionEffects()){player.removePotionEffect(pot.getType());}
         player.setHealth(20.0);
         player.setFoodLevel(20);
         player.setFreezeTicks(0);
